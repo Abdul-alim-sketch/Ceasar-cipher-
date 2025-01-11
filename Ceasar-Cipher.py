@@ -16,13 +16,13 @@ def caesar(message, offset):
 
 # Streamlit app layout
 st.title("Abdulalim's Web App")
-st.write("Encrypt your text using the Caesar cipher.")
+st.write("To encrypt the text you should paste it on the blank panel and press the encrypt button. For decrypt place the encrypted text on the panel to decrypt the text.")
 
 # Input for plain text
 text = st.text_input("Enter the text to be encrypted:")
 
 # Input for shift value
-shift = st.number_input("Enter the shift value (1-25):", min_value=1, max_value=25, value=3)
+shift = st.number_input("Enter the shift value (1-25):", min_value=1, max_value=25, value=5)
 
 # Button to encrypt
 if st.button("Submit Now"):
@@ -32,3 +32,12 @@ if st.button("Submit Now"):
         st.write('**Encrypted text:**', encrypted_text)
     else:
         st.warning("Please enter a text to encrypt.")
+if st.button("Decrypt"):
+	if text:
+        decrypted_text = caesar(text, -shift)  # Use negative shift for decryption
+        st.write('**Input text:**', text)
+        st.write('**Decrypted text:**', decrypted_text)
+	else:
+        st.warning("Please enter a text to decrypt.")
+
+
